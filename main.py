@@ -1,29 +1,42 @@
-vertices = []
-caras = []
-
-while True:
-    print("\n1. Registrar vértices")
-    print("2. Registrar caras")
-    print("3. Imprimir la figura")
-    print("4. Salir")
-    opcion = input("Seleccione una opción: ")
+def main():
+    vertices = []
+    caras = []
     
-    if opcion == "1":
-        datos = input("Ingrese vértice (Ejemplo: 1 0 1): ")
-        vertices.append(datos)
-        print("Vértice registrado.")
-    elif opcion == "2":
-        datos = input("Ingrese cara (Ejemplo: 1 2): ")
-        caras.append(datos)
-        print("Cara registrada.")
-    elif opcion == "3":
-        print("\nEstructura de la figura:")
-        for v in vertices:
-            print(f"v {v}")
-        for c in caras:
-            print(f"f {c}")
-    elif opcion == "4":
-        print("Saliendo del programa.")
-        break
-    else:
-        print("Opción inválida. Intente de nuevo.")
+    while True:
+        print("\nMenú:")
+        print("1. Agregar vértice")
+        print("2. Agregar cara")
+        print("3. Mostrar figura")
+        print("4. Salir")
+        
+        opcion = input("Elige una opción: ")
+        
+        if opcion == "1":
+            x = input("Ingrese X: ")
+            y = input("Ingrese Y: ")
+            z = input("Ingrese Z: ")
+            vertices.append((x, y, z))
+            print("Vértice agregado.")
+        elif opcion == "2":
+            if not vertices:
+                print("No hay vértices registrados.")
+                continue
+            indices = input("Ingrese los índices de los vértices separados por espacios: ").split()
+            caras.append([int(i) for i in indices])
+            print("Cara agregada.")
+        elif opcion == "3":
+            print("\nVértices:")
+            for i, v in enumerate(vertices):
+                print(f"{i}: {v}")
+            print("Caras:")
+            for i, c in enumerate(caras):
+                print(f"{i}: {c}")
+        elif opcion == "4":
+            print("Saliendo...")
+            break
+        else:
+            print("Opción no válida.")
+
+if __name__ == "__main__":
+    main()
+
